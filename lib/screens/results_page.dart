@@ -6,6 +6,16 @@ import '../components/reusable_card.dart';
 import '../components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
+  ResultsPage({
+    @required this.bmiResult,
+    @required this.resultText,
+    @required this.interpretation,
+  });
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,16 +45,20 @@ class ResultsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'Overweight',
+                      resultText.toUpperCase(),
                       style: kResultTextStyle,
                     ),
                     Text(
-                      '26.7',
+                      bmiResult,
                       style: kBMITextStyle,
                     ),
-                    Text(
-                      'Explanation',
-                      style: kBodyTextStyle,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Text(
+                        interpretation,
+                        style: kBodyTextStyle,
+                        textAlign: TextAlign.center,
+                      ),
                     )
                   ],
                 ),
